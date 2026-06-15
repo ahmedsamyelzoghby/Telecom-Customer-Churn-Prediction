@@ -8,6 +8,11 @@ The dataset contains customer demographics, account information, and service det
 * **The Catch:** The dataset suffers from a severe **Class Imbalance** (where loyal customers heavily outnumber churning customers). 
 * Default models failed to catch the minority class (Churn), leading to low **Recall**.
 
+### ⚖️ Visualizing the Class Imbalance
+Below is the distribution of the target variable, showing the clear gap between retained and churned customers before handling the imbalance:
+
+![Customer Churn Class Distribution](images/class_distribution.png)
+
 ## 🧪 The Data Science Journey (Experiments)
 To solve this, the project followed a structured, experimental approach:
 1. **Model Selection:** Evaluated `Logistic Regression`, `Decision Tree`, `Random Forest`, and `XGBoost` using 5-Fold Cross-Validation. **Random Forest** achieved the best potential.
@@ -20,11 +25,21 @@ The final tuned Random Forest model achieved a highly robust performance on unse
 * **Recall (Class 1): 74%** — Effectively capturing nearly 3/4 of all churning customers!
 * **Optimized Trade-off:** Maintained a strong balance between Precision and Recall to minimize false alarms while maximizing customer saves.
 
+### 📉 Model Evaluation (Confusion Matrix)
+Here is the performance signature of our final optimized model on the test set:
+
+![Final Model Confusion Matrix](images/confusion_matrix.png)
+
 ## 🚨 Top Business Insights
 Using **Feature Importance**, we discovered the top drivers behind customer churn:
 1. **Contract Type:** Short-term (Month-to-month) contracts are highly vulnerable to churn.
-2. **Tenure:** Newer customers have a significantly higher risk of leaving.
+2. **Tenure:** Newer customers have a significantly higher risk of leaving (Highly concentrated in the first few months).
 3. **Internet Service Type:** Fiber optic users showed a strange correlation with higher churn (requires infrastructure/pricing inspection).
+
+### 📊 Visualization of Insights
+The plot below shows the feature importance scores from our champion model, highlighting the top factors driving customer decisions:
+
+![Top 10 Feature Importances](images/feature_importance.png)
 
 ## 💻 Technical Stack
 * **Language:** Python 3
